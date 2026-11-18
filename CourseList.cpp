@@ -22,7 +22,7 @@ void CourseList::printCourses() const
 {
     for (const Course& course : courses)
     {
-        cout << course.getPrefix() << " "
-            << course.getNumber() << endl;
+        cout << course.getCoursePrefix() << " "
+            << course.getCourseNumber() << endl;
     }
 }

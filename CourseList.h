@@ -15,14 +15,14 @@
 #include "Course.h"
 #include <set>
 
-class CoursList
+class CourseList
 {
     public:
         void addCourse(const Course& course);
         void printCourses() const;
     
     private:
-        std::set<Course> course;
+        std::set<Course> courses;
 };
 
 #endif

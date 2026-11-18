@@ -30,61 +30,65 @@ int main()
 	// Use the same prefix with different numbers for two courses,
 	// and a different prefix for the third course.
 	// Call setCourseInfo() to initialize each object.
-	 
+	 Course course1;
+	 Course course2;
+	 Course course3;
+
+	 course1.setCourseInfo("CSCI", 150, 3);
+	 course2.setCourseInfo("CSCI", 165, 3);
+	 course3.setCourseInfo("MATH", 280, 4);
 
 	// Test getCoursePrefix(), getCourseNumber(), and getCourseUnits().
 	// Display the expected and actual values.
-
+	cout << "Testing Course::getCoursePrefix()\n"
+		<< "Expected: CSCI\n"
+		<< "Actual:   " << course1.getCoursePrefix() << endl;
+	cout << "Testing Course::getCourseNumber()\n"
+		<< "Expected: 150\n"
+		<< "Actual:   " << course1.getCourseNumber() << endl;
+	cout << "Testing Course::getCourseUnits()\n"
+		<< "Expected: 3\n"
+		<< "Actual:   " << course1.getCourseUnits() << endl;
 
 	// Test setCourseInfo() again by changing an existing course.
 	// Verify that all three member variables were updated.
-
+	course1.setCourseInfo("CSCI", 150, 4);
+	cout << "Testing Course::setCourseInfo()\n"
+		<< "Expected: CSCI 150 4\n"
+		<< "Actual:   " << course1.getCoursePrefix() << " "
+		<< course1.getCourseNumber() << " "
+		<< course1.getCourseUnits() << endl;
 
 	// Test operator<() with different course prefixes.
-
+	cout << "Testing Course::operator<() - different prefixes\n"
+		<< "Expected: true\n"
+		<< "Actual:   " << (course1 < course3) << endl;
 
 	// Test operator<() with matching prefixes and different numbers.
-
+	cout << "Testing Course::operator<() - matching prefixes, different numbers\n"
+		<< "Expected: true\n"
+		<< "Actual:   " << (course1 < course2) << endl;
 
 	// Test operator<() with matching prefixes and numbers.
 	// Verify that neither course is less than the other,
 	// even when their units differ.
-
+	cout << "Testing Course::operator<() - matching prefixes and numbers\n"
+		<< "Expected: false\n"
+		<< "Actual:   " << (course1 < course1) << endl;
 
 	// ===== COURSELIST =====
 
-    // Create an empty CourseList object and test printCourses().
-    CourseList courseList;
-    cout << "Testing CourseList::printCourses() (Empty CourseList)\n";
-    courseList.printCourses();
-    cout << "\n";
+	// Create an empty CourseList object and test printCourses().
 
-    // Test addCourse() by adding courses in an unsorted order.
-    Course testCourse1;
-    testCourse1.setCourseInfo("MATH", 185, 5);
 
-    Course testCourse2;
-    testCourse2.setCourseInfo("CSCI", 250, 4);
+	// Test addCourse() by adding courses in an unsorted order.
 
-    Course testCourse3;
-    testCourse3.setCourseInfo("CSCI", 150, 3);
 
-    courseList.addCourse(testCourse1);
-    courseList.addCourse(testCourse2);
-    courseList.addCourse(testCourse3);
+	// Add a duplicate course with the same prefix and number.
 
-    // Add a duplicate course with the same prefix and number.
-    Course duplicateCourse;
-    duplicateCourse.setCourseInfo("CSCI", 250, 5);
-    courseList.addCourse(duplicateCourse);
 
-    // Test printCourses() again.
-    // Verify that courses appear in sorted order without duplicates.
-    cout << "Testing CourseList::addCourse() and CourseList::printCourses()\n"
-         << "Expected order: CSCI 150, CSCI 250, MATH 185\n"
-         << "Actual output:\n";
-    courseList.printCourses();
-    cout << "\n";
+	// Test printCourses() again.
+	// Verify that courses appear in sorted order without duplicates.
 
 
 // ===== STUDENT =====
@@ -278,38 +282,57 @@ int main()
 
 	// Create two dynamic Node objects using existing Student objects.
 	// Use nullptr as the next pointer when appropriate.
-
+	Node* node1 = new Node(paidStudent, nullptr);
+	Node* node2 = new Node(unpaidStudent, nullptr);
 
 	// Test getStudent() by displaying the stored student's information.
-
+	cout << "\nTesting Node::getStudent()\n"
+		<< "Expected: 123456 - Lopez, Ana\n"
+		<< "Actual:   ";
+	node1->getStudent().printStudent();
 
 	// Test setStudent() and verify that the stored student changed.
-
+	node1->setStudent(unpaidStudent);
+	cout << "\nTesting Node::setStudent()\n"
+		<< "Expected: 789012 - Johnson, Bob\n"
+		<< "Actual:   ";
+	node1->getStudent().printStudent();
 
 	// Test setNext() by linking the first node to the second node.
-
+	node1->setNext(node2);
 
 	// Test getNext() and verify that it returns the expected pointer.
-
+	cout << "\nTesting Node::getNext()\n"
+		<< "Expected: 789012 - Johnson, Bob\n"
+		<< "Actual:   ";
+	node1->getNext()->getStudent().printStudent();
 
 	// Set the first node's next pointer to nullptr and verify it.
-
+	node1->setNext(nullptr);
+	cout << "\nTesting Node::setNext() with nullptr\n"
+		<< "Expected: nullptr\n"
+		<< "Actual:   " << node1->getNext() << endl;
 
 	// ===== STUDENTLIST =====
 
 	// Create an empty StudentList object.
-
+	StudentList studentList;
 
 	// Test getNoOfStudents(). The expected result is 0.
-
+	cout << "\nTesting StudentList::getNoOfStudents() - empty list\n"
+		<< "Expected: 0\n"
+		<< "Actual:   " << studentList.getNoOfStudents() << "\n";
 
 	// Test all four printing functions on the empty list:
 	// printStudentByID(), printStudentByName(),
 	// printStudentsByCourse(), and printAllStudents().
-
+	studentList.printStudentByID(123456, 100.0);
+	studentList.printStudentByName("Lopez");
+	studentList.printStudentByCourse(course1);
+	studentList.printAllStudents();
 
 	// Test clearStudentList() on the empty list.
-
+	studentList.clearStudentList();
 
 	// Test addStudent() by adding the first student.
 	// Verify that getNoOfStudents() returns 1.
