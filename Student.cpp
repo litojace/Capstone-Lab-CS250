@@ -10,16 +10,6 @@
     Capstone Lab: Transcripts
 */
 
-/*
-    Lastname, Firstname (Team Leader)
-    Nguyen, Jacen
-
-    Fall 2026
-    CS A250 - C++ 2
-
-    Capstone Lab: Transcripts
-*/
-
 #include "Student.h"
 
 #include <iostream>
