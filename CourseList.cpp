@@ -13,12 +13,12 @@
 #include <iostream>
 using namespace std;
 
-void CourseList::addCourse(Course course)
+void CourseList::addCourse(const Course& course)
 {
     courses.insert(course);
 }
 
-void CourseList::printCourses()
+void CourseList::printCourses() const
 {
     for (const Course& course : courses)
     {

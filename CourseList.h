@@ -18,8 +18,8 @@
 class CoursList
 {
     public:
-        void addCourse(Course course);
-        void printCourses();
+        void addCourse(const Course& course);
+        void printCourses() const;
     
     private:
         std::set<Course> course;
