@@ -9,3 +9,20 @@
     
     Capstone Lab: Transcripts
 */
+#ifndef COURSELIST_H
+#define COURSELIST_H
+
+#include "Course.h"
+#include <set>
+
+class CoursList
+{
+    public:
+        void addCourse(Course course);
+        void printCourses();
+    
+    private:
+        std::set<Course> course;
+};
+
+#endif

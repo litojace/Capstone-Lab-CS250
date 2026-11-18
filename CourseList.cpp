@@ -9,3 +9,20 @@
     
     Capstone Lab: Transcripts
 */
+#include "CourseList.h"
+#include <iostream>
+using namespace std;
+
+void CourseList::addCourse(Course course)
+{
+    courses.insert(course);
+}
+
+void CourseList::printCourses()
+{
+    for (const Course& course : courses)
+    {
+        cout << course.getPrefix() << " "
+            << course.getNumber() << endl;
+    }
+}
