@@ -53,17 +53,38 @@ int main()
 
 	// ===== COURSELIST =====
 
-	// Create an empty CourseList object and test printCourses().
+    // Create an empty CourseList object and test printCourses().
+    CourseList courseList;
+    cout << "Testing CourseList::printCourses() (Empty CourseList)\n";
+    courseList.printCourses();
+    cout << "\n";
 
+    // Test addCourse() by adding courses in an unsorted order.
+    Course testCourse1;
+    testCourse1.setCourseInfo("MATH", 185, 5);
 
-	// Test addCourse() by adding courses in an unsorted order.
+    Course testCourse2;
+    testCourse2.setCourseInfo("CSCI", 250, 4);
 
+    Course testCourse3;
+    testCourse3.setCourseInfo("CSCI", 150, 3);
 
-	// Add a duplicate course with the same prefix and number.
+    courseList.addCourse(testCourse1);
+    courseList.addCourse(testCourse2);
+    courseList.addCourse(testCourse3);
 
+    // Add a duplicate course with the same prefix and number.
+    Course duplicateCourse;
+    duplicateCourse.setCourseInfo("CSCI", 250, 5);
+    courseList.addCourse(duplicateCourse);
 
-	// Test printCourses() again.
-	// Verify that courses appear in sorted order without duplicates.
+    // Test printCourses() again.
+    // Verify that courses appear in sorted order without duplicates.
+    cout << "Testing CourseList::addCourse() and CourseList::printCourses()\n"
+         << "Expected order: CSCI 150, CSCI 250, MATH 185\n"
+         << "Actual output:\n";
+    courseList.printCourses();
+    cout << "\n";
 
 
 // ===== STUDENT =====
